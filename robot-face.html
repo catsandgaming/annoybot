@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AnnoyBot Blue Eyes</title>
+  <style>
+    body {
+      background-color: black;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .eyes {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      gap: 40px;
+    }
+    .eyeCircle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 8px solid dodgerblue;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="eyes">
+    <div class="eyeCircle"></div>
+    <div class="eyeCircle"></div>
+  </div>
+
+  <script>
+    const phrases = [
+      "I see you!",
+      "Where are the cats?",
+      "Look into my eyes!",
+      "Don't ignore me!",
+      "I'm still talking!",
+      "Printing complete... or is it?",
+      "Why is there paper on the floor?",
+      "Meow?",
+      "System override: coffee mode",
+      "Snack detected!"
+    ];
+
+    function speakRandomPhrase() {
+      const phrase = phrases[Math.floor(Math.random() * phrases.length)];
+      const utterance = new SpeechSynthesisUtterance(phrase);
+      utterance.rate = 1;
+      speechSynthesis.speak(utterance);
+    }
+
+    function loopSpeech() {
+      speakRandomPhrase();
+      const nextTime = Math.random() * 7000 + 3000; // 3–10 seconds
+      setTimeout(loopSpeech, nextTime);
+    }
+
+    // Start speaking once page loads
+    window.onload = () => {
+      loopSpeech();
+    };
+  </script>
+
+</body>
+</html>
