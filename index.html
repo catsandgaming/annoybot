@@ -34,36 +34,23 @@
   </div>
 
   <script>
-    const phrases = [
-      "I see you!",
-      "Where are the cats?",
-      "Look into my eyes!",
-      "Don't ignore me!",
-      "I'm still talking!",
-      "Printing complete... or is it?",
-      "Why is there paper on the floor?",
-      "Meow?",
-      "System override: coffee mode",
-      "Snack detected!"
-    ];
-
-    function speakRandomPhrase() {
-      const phrase = phrases[Math.floor(Math.random() * phrases.length)];
-      const utterance = new SpeechSynthesisUtterance(phrase);
-      utterance.rate = 1;
-      speechSynthesis.speak(utterance);
+    function annoy() {
+      const phrases = [
+        "I'm watching you...",
+        "Where’s the cat?",
+        "Feed me snacks!",
+        "I see everything!",
+        "Did you just move?",
+        "Boop!",
+        "Hehehe",
+        "I'm judging your gaming skills"
+      ];
+      const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+      const msg = new SpeechSynthesisUtterance(randomPhrase);
+      speechSynthesis.speak(msg);
     }
 
-    function loopSpeech() {
-      speakRandomPhrase();
-      const nextTime = Math.random() * 7000 + 3000; // 3–10 seconds
-      setTimeout(loopSpeech, nextTime);
-    }
-
-    // Start speaking once page loads
-    window.onload = () => {
-      loopSpeech();
-    };
+    setInterval(annoy, 8000); // Speak every 8 seconds
   </script>
 
 </body>
